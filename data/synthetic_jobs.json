@@ -1,0 +1,543 @@
+[
+  {
+    "job_id": 1,
+    "title": "Senior Backend Engineer",
+    "department": "Engineering",
+    "job_family": "Software Engineering",
+    "company": "Rodriguez, Figueroa and Sanchez",
+    "location": "Lake Curtis, WA",
+    "required_skills": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "REST APIs",
+      "Git",
+      "AWS"
+    ],
+    "required_experience": 5,
+    "description": "We are looking for a Senior Backend Engineer to design and build scalable backend systems. You will work closely with product and frontend teams to deliver reliable APIs and data pipelines. Experience with cloud-native architectures and containerization is essential.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-09-09"
+  },
+  {
+    "job_id": 2,
+    "title": "Full Stack Developer",
+    "department": "Engineering",
+    "job_family": "Software Engineering",
+    "company": "Miller, Henderson and Johnson",
+    "location": "East William, AK",
+    "required_skills": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Git",
+      "Docker"
+    ],
+    "required_experience": 3,
+    "description": "Join our product team as a Full Stack Developer. You will build and maintain user-facing features end-to-end, from database to UI. We value clean code, automated testing, and collaborative development.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-08"
+  },
+  {
+    "job_id": 3,
+    "title": "DevOps Engineer",
+    "department": "Infrastructure",
+    "job_family": "Software Engineering",
+    "company": "Baldwin Ltd",
+    "location": "Robinsonshire, KY",
+    "required_skills": [
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "CI/CD",
+      "AWS",
+      "Linux",
+      "Python"
+    ],
+    "required_experience": 4,
+    "description": "We need a DevOps Engineer to build and maintain our CI/CD pipelines, manage cloud infrastructure, and improve deployment reliability. You will work with engineering teams to automate everything from testing to production.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-09-01"
+  },
+  {
+    "job_id": 4,
+    "title": "Junior Software Engineer",
+    "department": "Engineering",
+    "job_family": "Software Engineering",
+    "company": "Blake and Sons",
+    "location": "Petersonberg, IL",
+    "required_skills": [
+      "Python",
+      "Git",
+      "SQL",
+      "REST APIs",
+      "Linux"
+    ],
+    "required_experience": 1,
+    "description": "We're hiring a Junior Software Engineer to join our growing team. You'll contribute to backend services, write tests, and learn from senior engineers. A passion for clean code and continuous learning is key.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-28"
+  },
+  {
+    "job_id": 5,
+    "title": "Senior Data Analyst",
+    "department": "Analytics",
+    "job_family": "Data Analysis",
+    "company": "Garcia-James",
+    "location": "Melanieview, AS",
+    "required_skills": [
+      "SQL",
+      "Python",
+      "Tableau",
+      "Statistics",
+      "Excel",
+      "A/B Testing"
+    ],
+    "required_experience": 4,
+    "description": "We are looking for a Senior Data Analyst to drive data-informed decisions across the organization. You will design dashboards, run A/B tests, and present actionable insights to leadership.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-06-19"
+  },
+  {
+    "job_id": 6,
+    "title": "Machine Learning Engineer",
+    "department": "Data Science",
+    "job_family": "Data Analysis",
+    "company": "Stevens, Martinez and Nielsen",
+    "location": "New Kellystad, OK",
+    "required_skills": [
+      "Python",
+      "Scikit-learn",
+      "TensorFlow",
+      "SQL",
+      "Docker",
+      "Feature Engineering",
+      "Git"
+    ],
+    "required_experience": 0,
+    "description": "Join us as a Machine Learning Engineer to build and deploy ML models that power our core product features. You will design feature pipelines, train models, and monitor production performance.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-03"
+  },
+  {
+    "job_id": 7,
+    "title": "Data Engineer",
+    "department": "Engineering",
+    "job_family": "Data Analysis",
+    "company": "Jones, Stanley and Mejia",
+    "location": "Port Jesseville, MS",
+    "required_skills": [
+      "Python",
+      "SQL",
+      "Spark",
+      "Airflow",
+      "AWS",
+      "ETL",
+      "Docker"
+    ],
+    "required_experience": 3,
+    "description": "We need a Data Engineer to build and maintain our data infrastructure. You will design ETL pipelines, optimize data warehouses, and ensure data quality and availability for analytics and ML teams.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Participate in code reviews and design discussions"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-11"
+  },
+  {
+    "job_id": 8,
+    "title": "Business Intelligence Analyst",
+    "department": "Business Operations",
+    "job_family": "Data Analysis",
+    "company": "Reid-Diaz",
+    "location": "Michaelview, UT",
+    "required_skills": [
+      "SQL",
+      "Power BI",
+      "Excel",
+      "Data Visualization",
+      "Statistics"
+    ],
+    "required_experience": 2,
+    "description": "We're looking for a BI Analyst to transform raw data into actionable business insights. You will build reports, create dashboards, and support cross-functional teams with data-driven recommendations.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-20"
+  },
+  {
+    "job_id": 9,
+    "title": "Digital Marketing Manager",
+    "department": "Marketing",
+    "job_family": "Marketing",
+    "company": "Jones, Reid and Ferguson",
+    "location": "East Steven, KY",
+    "required_skills": [
+      "Google Analytics",
+      "SEO",
+      "Google Ads",
+      "Content Strategy",
+      "Email Marketing",
+      "A/B Testing"
+    ],
+    "required_experience": 5,
+    "description": "Lead our digital marketing efforts across all channels. You will manage campaigns, optimize conversion funnels, and drive measurable growth through data-driven marketing strategies.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-09-12"
+  },
+  {
+    "job_id": 10,
+    "title": "Content Marketing Specialist",
+    "department": "Marketing",
+    "job_family": "Marketing",
+    "company": "Watts, Robinson and Nguyen",
+    "location": "East Lydiamouth, MO",
+    "required_skills": [
+      "Copywriting",
+      "SEO",
+      "WordPress",
+      "Social Media Marketing",
+      "Content Strategy"
+    ],
+    "required_experience": 2,
+    "description": "Join our content team to create compelling blog posts, whitepapers, and social media content. You will develop and execute a content calendar that drives organic traffic and brand awareness.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-10"
+  },
+  {
+    "job_id": 11,
+    "title": "Growth Marketing Manager",
+    "department": "Growth",
+    "job_family": "Marketing",
+    "company": "Clark PLC",
+    "location": "Jasonfort, MO",
+    "required_skills": [
+      "Google Ads",
+      "Facebook Ads",
+      "A/B Testing",
+      "Marketing Automation",
+      "HubSpot",
+      "Lead Generation"
+    ],
+    "required_experience": 4,
+    "description": "We need a Growth Marketing Manager to scale our acquisition channels. You will run paid campaigns, optimize CAC, and build automated nurture sequences that convert leads into customers.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-09-08"
+  },
+  {
+    "job_id": 12,
+    "title": "SEO Specialist",
+    "department": "Marketing",
+    "job_family": "Marketing",
+    "company": "Ellis, Baker and Wright",
+    "location": "Juliechester, MH",
+    "required_skills": [
+      "SEO",
+      "Google Analytics",
+      "Content Strategy",
+      "Market Research",
+      "WordPress"
+    ],
+    "required_experience": 2,
+    "description": "Optimize our web presence for search engines. You will conduct keyword research, implement on-page and technical SEO improvements, and track rankings across priority terms.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-10"
+  },
+  {
+    "job_id": 13,
+    "title": "Enterprise Account Executive",
+    "department": "Sales",
+    "job_family": "Sales",
+    "company": "Cox-Osborn",
+    "location": "New Trevor, WV",
+    "required_skills": [
+      "Salesforce",
+      "Solution Selling",
+      "Negotiation",
+      "Pipeline Management",
+      "B2B Sales",
+      "Presentation Skills"
+    ],
+    "required_experience": 6,
+    "description": "Close six- and seven-figure enterprise deals. You will manage complex sales cycles, build relationships with C-level executives, and consistently exceed quarterly quotas.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-06-19"
+  },
+  {
+    "job_id": 14,
+    "title": "Sales Development Representative",
+    "department": "Sales",
+    "job_family": "Sales",
+    "company": "Hernandez and Sons",
+    "location": "Carlsonfurt, MS",
+    "required_skills": [
+      "Cold Calling",
+      "Lead Generation",
+      "CRM Management",
+      "Prospecting",
+      "HubSpot"
+    ],
+    "required_experience": 1,
+    "description": "Generate qualified pipeline for our sales team. You will prospect via phone, email, and social channels, qualify inbound leads, and book discovery meetings with decision-makers.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-11"
+  },
+  {
+    "job_id": 15,
+    "title": "Regional Sales Manager",
+    "department": "Sales",
+    "job_family": "Sales",
+    "company": "Rice-Maddox",
+    "location": "Lake Jenniferside, WV",
+    "required_skills": [
+      "Account Management",
+      "Territory Management",
+      "Revenue Forecasting",
+      "Salesforce",
+      "Strategic Planning",
+      "Negotiation"
+    ],
+    "required_experience": 7,
+    "description": "Lead a team of account executives across the region. You will set sales strategy, coach reps, manage forecasting, and be accountable for regional revenue targets.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-10"
+  },
+  {
+    "job_id": 16,
+    "title": "Senior Product Designer",
+    "department": "Design",
+    "job_family": "Design",
+    "company": "Peterson, Carter and Moore",
+    "location": "Lake Nancyview, NY",
+    "required_skills": [
+      "Figma",
+      "User Research",
+      "Prototyping",
+      "Design Systems",
+      "Usability Testing",
+      "Wireframing"
+    ],
+    "required_experience": 5,
+    "description": "Shape the user experience of our flagship product. You will conduct user research, create wireframes and high-fidelity prototypes, and collaborate closely with engineering to ship polished features.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-08-27"
+  },
+  {
+    "job_id": 17,
+    "title": "UI/UX Designer",
+    "department": "Design",
+    "job_family": "Design",
+    "company": "Romero Inc",
+    "location": "Meaganhaven, PA",
+    "required_skills": [
+      "Figma",
+      "Adobe XD",
+      "Wireframing",
+      "Prototyping",
+      "HTML",
+      "CSS",
+      "Responsive Design"
+    ],
+    "required_experience": 3,
+    "description": "Design intuitive, beautiful interfaces for our web and mobile products. You will translate user needs into pixel-perfect designs and work with developers to ensure faithful implementation.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-04"
+  },
+  {
+    "job_id": 18,
+    "title": "Visual Designer",
+    "department": "Creative",
+    "job_family": "Design",
+    "company": "Brooks and Sons",
+    "location": "New Mariotown, DE",
+    "required_skills": [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Typography",
+      "Color Theory",
+      "Brand Identity",
+      "Figma"
+    ],
+    "required_experience": 2,
+    "description": "Create stunning visual assets across our brand touchpoints. From marketing materials to product illustrations, you will ensure a consistent and elevated brand presence.",
+    "responsibilities": [
+      "Collaborate with cross-functional teams to deliver high-impact projects",
+      "Contribute to best practices and team knowledge sharing",
+      "Report on key metrics and drive continuous improvement"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Health, dental, and vision insurance",
+      "Flexible remote work policy",
+      "Professional development budget"
+    ],
+    "posted_date": "2026-07-20"
+  }
+]
