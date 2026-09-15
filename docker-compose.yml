@@ -1,0 +1,164 @@
+# =============================================================================
+# KDAC-2 Resume Screening & Talent Analytics Platform
+# Docker Compose Configuration
+# =============================================================================
+# Usage: docker-compose up --build
+# All services will start with proper dependency ordering.
+
+services:
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Data Warehouse
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: kdac2-postgres
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # MinIO Object Storage (S3-compatible)
+  # ---------------------------------------------------------------------------
+  minio:
+    image: minio/minio:latest
+    container_name: kdac2-minio
+    env_file: .env
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "${MINIO_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Apache Airflow (standalone mode — single container)
+  # ---------------------------------------------------------------------------
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kdac2-airflow
+    env_file: .env
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: "5432"
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_ENDPOINT: minio:9000
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+    command: airflow standalone
+    ports:
+      - "${AIRFLOW_PORT:-8080}:8080"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./data:/opt/airflow/project/data
+      - ./etl:/opt/airflow/project/etl
+      - ./ml:/opt/airflow/project/ml
+      - ./genai:/opt/airflow/project/genai
+      - ./dashboards:/opt/airflow/project/dashboards
+      - airflow_logs:/opt/airflow/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Streamlit EDA Dashboard
+  # ---------------------------------------------------------------------------
+  eda-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kdac2-eda-dashboard
+    env_file: .env
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: "5432"
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+    entrypoint:
+      - bash
+      - -c
+      - "streamlit run /opt/airflow/project/dashboards/eda_dashboard.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true"
+    ports:
+      - "${STREAMLIT_EDA_PORT:-8501}:8501"
+    volumes:
+      - ./dashboards:/opt/airflow/project/dashboards
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Streamlit Recruiter Dashboard
+  # ---------------------------------------------------------------------------
+  recruiter-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kdac2-recruiter-dashboard
+    env_file: .env
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: "5432"
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+    entrypoint:
+      - bash
+      - -c
+      - "streamlit run /opt/airflow/project/dashboards/recruiter_dashboard.py --server.port=8502 --server.address=0.0.0.0 --server.headless=true"
+    ports:
+      - "${STREAMLIT_RECRUITER_PORT:-8502}:8502"
+    volumes:
+      - ./dashboards:/opt/airflow/project/dashboards
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  minio_data:
+  airflow_logs:

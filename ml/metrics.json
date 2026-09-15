@@ -1,0 +1,17 @@
+{
+  "roc_auc": 0.831864406779661,
+  "ndcg_at_5": 0.9999999999999999,
+  "precision_at_5": 1.0,
+  "train_size": 416,
+  "test_size": 84,
+  "train_candidates": 40,
+  "test_candidates": 10,
+  "positive_rate_train": 0.2692307692307692,
+  "positive_rate_test": 0.2976190476190476,
+  "coefficients": {
+    "semantic_score": -0.2868308934666178,
+    "skill_overlap_score": 2.6650780160660177,
+    "experience_score": 3.0748132115170996
+  },
+  "intercept": -4.01750712926856
+}
