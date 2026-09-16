@@ -158,17 +158,77 @@ def load_all_data():
         return df_jobs, df_candidates, df_apps, "Live PostgreSQL Database"
 
     except Exception as err:
-        # Fallback to demo snapshot
+        # Fallback Tier 1: Bundled demo_data.json snapshot
         snapshot_path = os.path.join(os.path.dirname(__file__), "data", "demo_data.json")
         if os.path.exists(snapshot_path):
-            with open(snapshot_path, "r", encoding="utf-8") as f:
-                raw = json.load(f)
-            df_jobs = pd.DataFrame(raw.get("jobs", []))
-            df_candidates = pd.DataFrame(raw.get("candidates", []))
-            df_apps = pd.DataFrame(raw.get("applications", []))
-            return df_jobs, df_candidates, df_apps, "Bundled Snapshot (Demo Mode)"
-        else:
-            return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), f"Error: {err}"
+            try:
+                with open(snapshot_path, "r", encoding="utf-8") as f:
+                    raw = json.load(f)
+                df_jobs = pd.DataFrame(raw.get("jobs", []))
+                df_candidates = pd.DataFrame(raw.get("candidates", []))
+                df_apps = pd.DataFrame(raw.get("applications", []))
+                if not df_jobs.empty:
+                    return df_jobs, df_candidates, df_apps, "Bundled Snapshot (Demo Mode)"
+            except Exception:
+                pass
+
+        # Fallback Tier 2: Check synthetic_jobs.json & extracted_candidates.json
+        jobs_path = os.path.join(os.path.dirname(__file__), "data", "synthetic_jobs.json")
+        cands_path = os.path.join(os.path.dirname(__file__), "data", "extracted_candidates.json")
+        if os.path.exists(jobs_path):
+            try:
+                with open(jobs_path, "r", encoding="utf-8") as f:
+                    raw_jobs = json.load(f)
+                raw_cands = []
+                if os.path.exists(cands_path):
+                    with open(cands_path, "r", encoding="utf-8") as f:
+                        raw_cands = json.load(f)
+                df_jobs = pd.DataFrame(raw_jobs)
+                df_candidates = pd.DataFrame(raw_cands)
+                apps = []
+                for j in raw_jobs[:6]:
+                    for c in raw_cands[:15]:
+                        apps.append({
+                            "application_id": len(apps) + 1,
+                            "job_id": j.get("job_id", 1),
+                            "candidate_id": c.get("candidate_id", 1),
+                            "final_score": 0.58,
+                            "semantic_score": 0.62,
+                            "skill_overlap_score": 0.55,
+                            "experience_score": 1.0,
+                            "candidate_name": c.get("name", "Candidate"),
+                            "education": c.get("education", "B.Tech CSE"),
+                            "experience_years": float(c.get("experience_years", 0.0) or 0.0),
+                            "most_recent_title": c.get("most_recent_title", "Student Developer"),
+                            "candidate_skills": c.get("skills", ["Python", "SQL", "Docker"]),
+                            "insight_text": f"Candidate demonstrates strong technical alignment for {j.get('title')}."
+                        })
+                return df_jobs, df_candidates, pd.DataFrame(apps), "Synthetic Dataset (Demo Mode)"
+            except Exception:
+                pass
+
+        # Fallback Tier 3: In-Memory Production Sample (Guarantees zero crashes anywhere)
+        default_jobs = [
+            {"job_id": 1, "title": "Machine Learning Engineer", "department": "Data Science", "company": "KDAC Tech", "location": "Remote", "job_family": "Data", "required_skills": ["Python", "TensorFlow", "SQL", "Docker", "Git"], "required_experience": 0, "description": "Design feature pipelines, train deep learning models, and monitor production inference performance."},
+            {"job_id": 2, "title": "Full Stack Developer", "department": "Engineering", "company": "KDAC Tech", "location": "Hybrid", "job_family": "Software", "required_skills": ["React", "Node.js", "JavaScript", "SQL", "Git"], "required_experience": 1, "description": "Develop modern user interfaces and robust microservice APIs with React and Node.js."},
+            {"job_id": 3, "title": "Data Analyst", "department": "Analytics", "company": "KDAC Tech", "location": "Bangalore", "job_family": "Data", "required_skills": ["SQL", "Python", "Tableau", "Excel", "Statistics"], "required_experience": 0, "description": "Analyze operational metrics, generate executive dashboards, and extract business intelligence insights."},
+            {"job_id": 4, "title": "DevOps Engineer", "department": "Infrastructure", "company": "KDAC Tech", "location": "Remote", "job_family": "DevOps", "required_skills": ["Docker", "Kubernetes", "Linux", "AWS", "CI/CD"], "required_experience": 1, "description": "Maintain cloud infrastructure, automate deployment pipelines, and optimize containerized workloads."},
+        ]
+        default_candidates = [
+            {"candidate_id": 1, "name": "Vraj Amin", "most_recent_title": "AI/ML Enthusiast", "education": "B.Tech Computer Science Engineering", "university": "Faculty of Technology", "experience_years": 1.0, "location": "Ahmedabad", "resume_filename": "Vraj_Amin_Resume.pdf"},
+            {"candidate_id": 2, "name": "Amulya Anamdasu", "most_recent_title": "Aspiring Data Analyst", "education": "B.Tech Computer Science Engineering", "university": "Faculty of Technology", "experience_years": 0.0, "location": "Ahmedabad", "resume_filename": "Amulya_Anamdasu_Resume.pdf"},
+            {"candidate_id": 3, "name": "Aryan Chauhan", "most_recent_title": "Frontend Developer", "education": "B.Tech Computer Science Engineering", "university": "Faculty of Technology", "experience_years": 1.0, "location": "Ahmedabad", "resume_filename": "Aryan_Chauhan_Resume.pdf"},
+            {"candidate_id": 4, "name": "Krinna Anandpara", "most_recent_title": "Computer Science Student / Aspiring Engineer", "education": "B.Tech Computer Science Engineering", "university": "Faculty of Technology", "experience_years": 0.0, "location": "Ahmedabad", "resume_filename": "Krinna_Anandpara_Resume.pdf"},
+            {"candidate_id": 5, "name": "Devasya Gupta", "most_recent_title": "Software Engineering Intern", "education": "B.Tech Computer Science Engineering", "university": "Faculty of Technology", "experience_years": 0.0, "location": "Ahmedabad", "resume_filename": "Devasya_Gupta_Resume.pdf"},
+        ]
+        default_apps = [
+            {"application_id": 1, "job_id": 1, "candidate_id": 1, "final_score": 0.85, "semantic_score": 0.82, "skill_overlap_score": 0.80, "experience_score": 1.0, "candidate_name": "Vraj Amin", "most_recent_title": "AI/ML Enthusiast", "education": "B.Tech CSE", "experience_years": 1.0, "resume_filename": "Vraj_Amin_Resume.pdf", "candidate_skills": ["Python", "TensorFlow", "Docker", "SQL", "Git"], "insight_text": "Vraj Amin is an outstanding match for Machine Learning Engineer, possessing direct hands-on experience in Python, TensorFlow, and Docker with high semantic alignment."},
+            {"application_id": 2, "job_id": 1, "candidate_id": 2, "final_score": 0.62, "semantic_score": 0.65, "skill_overlap_score": 0.50, "experience_score": 1.0, "candidate_name": "Amulya Anamdasu", "most_recent_title": "Aspiring Data Analyst", "education": "B.Tech CSE", "experience_years": 0.0, "resume_filename": "Amulya_Anamdasu_Resume.pdf", "candidate_skills": ["Python", "SQL", "Tableau", "Excel"], "insight_text": "Solid technical foundation in Python and SQL with strong analytical and problem solving capabilities."},
+            {"application_id": 3, "job_id": 2, "candidate_id": 3, "final_score": 0.88, "semantic_score": 0.86, "skill_overlap_score": 0.85, "experience_score": 1.0, "candidate_name": "Aryan Chauhan", "most_recent_title": "Frontend Developer", "education": "B.Tech CSE", "experience_years": 1.0, "resume_filename": "Aryan_Chauhan_Resume.pdf", "candidate_skills": ["React", "JavaScript", "Node.js", "Git", "HTML", "CSS"], "insight_text": "Strong fit for Full Stack Developer with practical React and Node.js project experience and collaborative Git workflows."},
+            {"application_id": 4, "job_id": 1, "candidate_id": 5, "final_score": 0.72, "semantic_score": 0.70, "skill_overlap_score": 0.65, "experience_score": 1.0, "candidate_name": "Devasya Gupta", "most_recent_title": "Software Engineering Intern", "education": "B.Tech CSE", "experience_years": 0.0, "resume_filename": "Devasya_Gupta_Resume.pdf", "candidate_skills": ["Python", "SQL", "Docker", "Git", "C++"], "insight_text": "Promising software engineering background with good fundamentals in containerization and relational databases."},
+            {"application_id": 5, "job_id": 3, "candidate_id": 2, "final_score": 0.84, "semantic_score": 0.80, "skill_overlap_score": 0.85, "experience_score": 1.0, "candidate_name": "Amulya Anamdasu", "most_recent_title": "Aspiring Data Analyst", "education": "B.Tech CSE", "experience_years": 0.0, "resume_filename": "Amulya_Anamdasu_Resume.pdf", "candidate_skills": ["Python", "SQL", "Tableau", "Excel", "Statistics"], "insight_text": "Excellent match for Data Analyst role with direct competence in SQL, Tableau dashboarding, and exploratory data analysis."},
+        ]
+        return pd.DataFrame(default_jobs), pd.DataFrame(default_candidates), pd.DataFrame(default_apps), "Demo / Preview Mode"
 
 
 # ---------------------------------------------------------------------------
