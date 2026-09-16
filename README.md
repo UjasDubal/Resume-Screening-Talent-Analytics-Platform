@@ -2,6 +2,9 @@
 
 A complete, production-grade, locally-runnable **Resume Screening & Talent Analytics Platform** orchestrating synthetic data generation, multimodal resume parsing, PostgreSQL star schema data warehousing, machine learning candidate-to-job matching, Groq GenAI insights (with offline fallback), two Streamlit dashboards, and Apache Airflow orchestration.
 
+## Live Demo :
+  https://resume-screening-talent-analytics-platform.streamlit.app/
+
 ---
 
 ## 🏗️ System Architecture
